@@ -8,10 +8,6 @@
     <artifactId>hw7maven</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <maven.compile.release>11</maven.compile.release>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -19,6 +15,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.7.0</version>
                 <configuration>
+                    <release>8</release>
                 </configuration>
             </plugin>
             <plugin>
