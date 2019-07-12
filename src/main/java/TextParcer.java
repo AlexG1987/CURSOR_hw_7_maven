@@ -3,7 +3,7 @@ import java.util.*;
 
 public class TextParcer {
 
-    private static final String[] badWords = {"shit", "fuck", "bich", "fucking", "dick", "dork", "fucked"};
+    private static final String[] badWords = {"shit", "fuck", "bitch", "fucking", "dick", "dork", "fucked"};
     protected static final int n = 5;
 
 
