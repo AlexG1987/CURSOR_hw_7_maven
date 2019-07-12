@@ -4,15 +4,15 @@ import java.util.*;
 public class TextParcer {
 
     private static final String[] badWords = {"shit", "fuck", "bitch", "fucking", "dick", "dork", "fucked"};
-    protected static final int n = 5;
+    private static final int n = 5;
 
 
-    public static int countNumOfWords(List<String> lineWords) {
+    private static int countNumOfWords(List<String> lineWords) {
         return lineWords.size();
     }
 
-    public static List<String> returnBadShortWordsList(List<String> lineWords) {
-        List<String> badShortWordsList = new ArrayList();
+    private static List<String> returnBadShortWordsList(List<String> lineWords) {
+        List<String> badShortWordsList = new ArrayList<>();
         for (String s : badWords) {
             for (String w : lineWords) {
                 if (s.equalsIgnoreCase(w)) {
@@ -21,13 +21,14 @@ public class TextParcer {
             }
         }
         for (String l : lineWords) {
-            if (l.length() < 3)
+            if (l.length() < 3) {
                 badShortWordsList.add(l);
+            }
         }
         return badShortWordsList;
     }
 
-    public static void printMaxWord(final List<String> WordsList) {
+    protected static void printMaxWord(final List<String> WordsList) {
         Map<String, Integer> wordCounts = new HashMap<String, Integer>();
         for (String word : WordsList) {
             Integer count = wordCounts.get(word);
@@ -57,15 +58,15 @@ public class TextParcer {
         }
     }
 
-    public static void printTotalAmountWords() throws IOException {
+    protected static void printTotalAmountWords() throws IOException {
         System.out.println("Total amount of words in text is: " + TextParcer.countNumOfWords(Main.textFileParcerArrayList()));
     }
 
-    public static void printAmountClearWords() throws IOException {
+    protected static void printAmountClearWords() throws IOException {
         System.out.println("Amount of words without censored and less 3 characters length is: " + (countNumOfWords(Main.textFileParcerArrayList()) - countNumOfWords(TextParcer.returnBadShortWordsList(Main.textFileParcerArrayList()))));
     }
 
-    public static void printAmountCensoredWords() throws IOException {
+    protected static void printAmountCensoredWords() throws IOException {
         System.out.println("Amount of censored words: " + TextParcer.countNumOfWords(returnBadShortWordsList(Main.textFileParcerArrayList())));
     }
 
