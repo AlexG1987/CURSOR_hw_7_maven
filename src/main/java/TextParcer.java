@@ -3,15 +3,15 @@ import java.util.*;
 
 class TextParcer {
 
-    static final String[] badWords = {"shit", "fuck", "bitch", "fucking", "dick", "dork", "fucked"};
-    static final int n = 5;
+    private static final String[] badWords = {"shit", "fuck", "bitch", "fucking", "dick", "dork", "fucked"};
+    private static final int n = 5;
 
 
-    static int countNumOfWords(List<String> lineWords) {
+    private static int countNumOfWords(List<String> lineWords) {
         return lineWords.size();
     }
 
-    static List<String> returnBadShortWordsList(List<String> lineWords) {
+    private static List<String> returnBadShortWordsList(List<String> lineWords) {
         List<String> badShortWordsList = new ArrayList<>();
         for (String s : badWords) {
             for (String w : lineWords) {
@@ -29,7 +29,7 @@ class TextParcer {
     }
 
     static void printMaxWord(final List<String> WordsList) {
-        Map<String, Integer> wordCounts = new HashMap<String, Integer>();
+        Map<String, Integer> wordCounts = new HashMap<>();
         for (String word : WordsList) {
             Integer count = wordCounts.get(word);
             if (count == null) {
@@ -38,13 +38,8 @@ class TextParcer {
             wordCounts.put(word, count + 1);
         }
         Set<Map.Entry<String, Integer>> entrySet = wordCounts.entrySet();
-        List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(entrySet);
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
-                return (e2.getValue().compareTo(e1.getValue()));
-            }
-        });
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(entrySet);
+        list.sort((e1, e2) -> (e2.getValue().compareTo(e1.getValue())));
         System.out.println("Most frequent words are : (" + n + " most repeated)");
         int count = 0;
         for (Map.Entry<String, Integer> entry : list) {

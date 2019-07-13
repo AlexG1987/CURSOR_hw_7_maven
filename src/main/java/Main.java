@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 class Main {
 
-    static final String path = "src\\main\\resources\\data.txt";
+    private static final String path = "src\\main\\resources\\data.txt";
 
     static List<String> textFileParcerArrayList() throws IOException {
         String line;
@@ -14,7 +14,7 @@ class Main {
             StringBuilder sb = new StringBuilder();
             while (scanner.hasNext()) {
                 String textLine = scanner.nextLine();
-                sb = sb.append(textLine + " ");
+                sb.append(textLine).append(" ");
             }
             line = sb.toString();
         }
