@@ -8,7 +8,7 @@ class Main {
 
     private static final String PATH = "src\\main\\resources\\data.txt";
 
-    static List<String> textFileParserToArrayList() throws IOException {
+    private static List<String> textFileParserToArrayList() throws IOException {
         String line;
         try (Scanner scanner = new Scanner(new FileReader(PATH))) {
             StringBuilder sb = new StringBuilder();
