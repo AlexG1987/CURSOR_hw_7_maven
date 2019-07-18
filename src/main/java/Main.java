@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 class Main {
 
-    private static final String path = "src\\main\\resources\\data.txt";
+    private static final String PATH = "src\\main\\resources\\data.txt";
 
-    static List<String> textFileParcerArrayList() throws IOException {
+    static List<String> textFileParserToArrayList() throws IOException {
         String line;
-        try (Scanner scanner = new Scanner(new FileReader(path))) {
+        try (Scanner scanner = new Scanner(new FileReader(PATH))) {
             StringBuilder sb = new StringBuilder();
             while (scanner.hasNext()) {
                 String textLine = scanner.nextLine();
@@ -23,11 +23,11 @@ class Main {
         return Arrays.asList(words);
     }
 
-
     public static void main(String[] args) throws IOException {
-        TextParcer.printTotalAmountWords();
-        TextParcer.printAmountClearWords();
-        TextParcer.printAmountCensoredWords();
-        TextParcer.printMaxWord(textFileParcerArrayList());
+        System.out.println("Total amount of words in text is: " + textFileParserToArrayList().size());
+        System.out.println("Amount of filtered words in text is: " + (textFileParserToArrayList().size() - TextParser.returnBadShortWordsList(textFileParserToArrayList()).size()));
+        System.out.println("Amount of censored words is: " + TextParser.returnBadShortWordsList(textFileParserToArrayList()).size());
+        TextParser.printMaxWord(textFileParserToArrayList());
+
     }
 }
